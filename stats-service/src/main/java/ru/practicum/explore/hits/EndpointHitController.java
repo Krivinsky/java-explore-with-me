@@ -24,7 +24,8 @@ public class EndpointHitController {
     @GetMapping(path = "/stats")
     public List<EndpointHitDtoResp> getStat(@RequestParam (value = "start") String start,
                                             @RequestParam (value = "end") String end,
-                                            @RequestParam (value = "uris") List<String> uris) {
-        return endpointHitService.getStat(start, end, uris);
+                                            @RequestParam (value = "uris") List<String> uris,
+                                            @RequestParam (value = "unique", defaultValue = "false") Boolean unique) {
+        return endpointHitService.getStat(start, end, uris, unique);
     }
 }
