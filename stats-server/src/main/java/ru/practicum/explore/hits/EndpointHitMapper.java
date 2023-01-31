@@ -17,11 +17,4 @@ public class EndpointHitMapper {
                 .ip(endpointHit.getIp())
                 .build();
     }
-
-    public static EndpointHitDtoResp toEndpointHitDtoResp(EndpointHit endpointHit) {
-        return EndpointHitDtoResp.builder()
-                .app(endpointHit.getApp())
-                .uri(endpointHit.getUri())
-                .build();
-    }
 }

@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EndpointHitServiceImpl implements EndpointHitService {
@@ -31,9 +33,15 @@ public class EndpointHitServiceImpl implements EndpointHitService {
         List<EndpointHitDtoResp> result;
 
         if (unique) {
-            result = endpointHitRepository.getStatUrisIsUnique(ldtStart, ldtEnd, uris);
+            result = endpointHitRepository.getStatUrisIsUnique(ldtStart, ldtEnd, uris)
+                    .stream()
+                    .sorted(Comparator.comparing(EndpointHitDtoResp::getHits).reversed())
+                    .collect(Collectors.toList());
         } else {
-            result = endpointHitRepository.getStat(ldtStart, ldtEnd, uris);
+            result = endpointHitRepository.getStat(ldtStart, ldtEnd, uris)
+                    .stream()
+                    .sorted(Comparator.comparing(EndpointHitDtoResp::getHits).reversed())
+                    .collect(Collectors.toList());;
         }
         return result;
     }
