@@ -1,22 +1,26 @@
-package ru.practicum.explore.hits;
+package ru.practicum;
 
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
+
+//import javax.validation.constraints.NotBlank;
 @Builder
 @Getter
 @Setter
 public class EndpointHitDto {
 
-    @NotBlank
+//    @NotBlank
     private String app;
 
-    @NotBlank
+//    @NotBlank
     private String uri;
 
-    @NotBlank
+//    @NotBlank
     private String ip;
+
+    private LocalDateTime timestamp;
 }

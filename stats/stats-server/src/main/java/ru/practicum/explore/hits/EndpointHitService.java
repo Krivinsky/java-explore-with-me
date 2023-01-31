@@ -1,5 +1,7 @@
 package ru.practicum.explore.hits;
 
+import ru.practicum.EndpointHitDto;
+
 import java.util.List;
 
 public interface EndpointHitService {
