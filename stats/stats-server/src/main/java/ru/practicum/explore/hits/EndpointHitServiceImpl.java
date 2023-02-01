@@ -2,6 +2,7 @@ package ru.practicum.explore.hits;
 
 import org.springframework.stereotype.Service;
 import ru.practicum.EndpointHitDto;
+import ru.practicum.EndpointHitDtoResp;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

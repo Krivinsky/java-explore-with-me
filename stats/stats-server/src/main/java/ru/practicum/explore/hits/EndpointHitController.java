@@ -3,6 +3,7 @@ package ru.practicum.explore.hits;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.EndpointHitDto;
+import ru.practicum.EndpointHitDtoResp;
 
 import java.util.List;
 

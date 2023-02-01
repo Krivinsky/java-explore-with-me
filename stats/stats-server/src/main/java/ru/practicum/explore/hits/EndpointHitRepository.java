@@ -3,6 +3,7 @@ package ru.practicum.explore.hits;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import ru.practicum.EndpointHitDtoResp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EndpointHitRepository  extends JpaRepository<EndpointHit, Long> {
 
-    @Query("SELECT new ru.practicum.explore.hits.EndpointHitDtoResp(e.app, e.uri, COUNT(distinct e.ip)) " +
+    @Query("SELECT new ru.practicum.EndpointHitDtoResp(e.app, e.uri, COUNT(distinct e.ip)) " +
             "FROM EndpointHit AS e " +
             "WHERE e.timestamp >= :start " +
             "AND e.timestamp <= :end " +
@@ -18,7 +19,7 @@ public interface EndpointHitRepository  extends JpaRepository<EndpointHit, Long>
             "GROUP BY e.app, e.uri")
     List<EndpointHitDtoResp> getStatUrisIsUnique(LocalDateTime start, LocalDateTime end, List<String> uris);
 
-    @Query("SELECT new ru.practicum.explore.hits.EndpointHitDtoResp(e.app, e.uri, COUNT(e.ip)) " +
+    @Query("SELECT new ru.practicum.EndpointHitDtoResp(e.app, e.uri, COUNT(e.ip)) " +
             "FROM EndpointHit AS e " +
             "WHERE e.timestamp >= :start " +
             "AND e.timestamp <= :end " +

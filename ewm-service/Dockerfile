@@ -1,6 +1,5 @@
 FROM amazoncorretto:11
-
-COPY target/*.jar stats-server-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/stats-server-0.0.1-SNAPSHOT.jar"]
-
-EXPOSE 9090
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["sh","-c", "java ${JAR_OPTS} -jar /app.jar ${0} ${@}"]

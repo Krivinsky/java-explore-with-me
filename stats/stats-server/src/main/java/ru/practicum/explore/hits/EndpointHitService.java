@@ -1,6 +1,7 @@
 package ru.practicum.explore.hits;
 
 import ru.practicum.EndpointHitDto;
+import ru.practicum.EndpointHitDtoResp;
 
 import java.util.List;
 
