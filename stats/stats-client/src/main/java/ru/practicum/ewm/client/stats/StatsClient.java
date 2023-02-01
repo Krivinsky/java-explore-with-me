@@ -85,7 +85,7 @@ public class StatsClient {
 
             HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
-            if(HttpStatus.valueOf(response.statusCode()).is2xxSuccessful()) {
+            if (HttpStatus.valueOf(response.statusCode()).is2xxSuccessful()) {
                 return json.readValue(response.body(), new TypeReference<List<EndpointHitDto>>() {
                     @Override
                     public Type getType() {
@@ -107,7 +107,7 @@ public class StatsClient {
         String queryString = String.format("?start=%s&end=%s&unique=%b%&application=%s",
                 start, end, true, application);
 //
-//        if (request.hasUriCondition()) {
+//        if(request.hasUriCondition()) {
 //            queryString += "&uris" + String.join(",", request.getUris());
 //        }
 //
