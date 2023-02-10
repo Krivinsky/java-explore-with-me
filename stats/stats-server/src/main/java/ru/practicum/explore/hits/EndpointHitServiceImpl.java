@@ -1,8 +1,8 @@
 package ru.practicum.explore.hits;
 
 import org.springframework.stereotype.Service;
-import ru.practicum.EndpointHitDto;
-import ru.practicum.EndpointHitDtoResp;
+import ru.practicum.EndpointHit.EndpointHitDto;
+import ru.practicum.EndpointHit.EndpointHitDtoResp;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class EndpointHitServiceImpl implements EndpointHitService {
 
-    EndpointHitRepository endpointHitRepository;
+    private final EndpointHitRepository endpointHitRepository;
 
     public EndpointHitServiceImpl(EndpointHitRepository endpointHitRepository) {
         this.endpointHitRepository = endpointHitRepository;
@@ -43,7 +43,7 @@ public class EndpointHitServiceImpl implements EndpointHitService {
             result = endpointHitRepository.getStat(ldtStart, ldtEnd, uris)
                     .stream()
                     .sorted(Comparator.comparing(EndpointHitDtoResp::getHits).reversed())
-                    .collect(Collectors.toList());;
+                    .collect(Collectors.toList());
         }
         return result;
     }

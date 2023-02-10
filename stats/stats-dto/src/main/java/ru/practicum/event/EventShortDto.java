@@ -1,5 +1,12 @@
-package ru.practicum;
+package ru.practicum.event;
 
+import lombok.Builder;
+import lombok.Data;
+import ru.practicum.category.CategoryDto;
+import ru.practicum.user.UserShortDto;
+
+@Data
+@Builder
 public class EventShortDto {
 
     private String annotation;
@@ -14,7 +21,7 @@ public class EventShortDto {
 
     private UserShortDto initiator;
 
-    private boolean paid;
+    private Boolean paid;
 
     private String title;
 

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import ru.practicum.EndpointHitDto;
+import ru.practicum.EndpointHit.EndpointHitDto;
 import ru.practicum.ViewsStatsRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,7 +86,7 @@ public class StatsClient {
             HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
             if (HttpStatus.valueOf(response.statusCode()).is2xxSuccessful()) {
-                return json.readValue(response.body(), new TypeReference<List<EndpointHitDto>>() {
+                return json.readValue(response.body(), new TypeReference<>() {
                     @Override
                     public Type getType() {
                         return super.getType();

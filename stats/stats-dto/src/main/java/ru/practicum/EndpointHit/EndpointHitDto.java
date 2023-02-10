@@ -1,4 +1,4 @@
-package ru.practicum;
+package ru.practicum.EndpointHit;
 
 
 import lombok.Builder;
