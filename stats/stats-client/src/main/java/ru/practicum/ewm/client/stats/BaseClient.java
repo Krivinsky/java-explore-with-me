@@ -18,7 +18,7 @@ public class BaseClient {
     }
 
     protected ResponseEntity<List<ViewStats>> get(String path, @Nullable Map<String, Object> parameters) {
-        return makeAndSendRequestGet(path, parameters, null);
+        return makeAndSendRequestGet(path, parameters);
     }
 
     protected <T> ResponseEntity<Object> post(String path, T body) {
@@ -36,10 +36,10 @@ public class BaseClient {
         return prepareGatewayResponse(statsResponse);
     }
 
-    private <T> ResponseEntity<List<ViewStats>> makeAndSendRequestGet(String path, @Nullable Map<String,
-                                                                      Object> parameters, T body) {
+    private <T> ResponseEntity<List<ViewStats>> makeAndSendRequestGet(String path,
+                                                                      Map<String, Object> parameters) {
 
-        HttpEntity<T> requestEntity = new HttpEntity<>(body);
+        HttpEntity<T> requestEntity = new HttpEntity<>(defaultHeaders());
         ResponseEntity<List<ViewStats>> statsResponse;
         try {
              statsResponse = rest.exchange(path, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<>() {},
@@ -71,5 +71,12 @@ public class BaseClient {
             return responseBuilder.body(response.getBody());
         }
         return responseBuilder.build();
+    }
+
+    private HttpHeaders defaultHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        return headers;
     }
 }
