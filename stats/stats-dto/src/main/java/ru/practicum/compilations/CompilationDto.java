@@ -1,10 +1,11 @@
-package ru.practicum;
+package ru.practicum.compilations;
 
 import lombok.Builder;
 import lombok.Data;
 import ru.practicum.event.EventShortDto;
 
 import java.util.List;
+
 @Data
 @Builder
 public class CompilationDto {
