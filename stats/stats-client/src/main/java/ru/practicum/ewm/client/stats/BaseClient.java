@@ -2,7 +2,6 @@ package ru.practicum.ewm.client.stats;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
-import org.springframework.lang.Nullable;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import ru.practicum.EndpointHit.ViewStats;
@@ -17,7 +16,7 @@ public class BaseClient {
         this.rest = rest;
     }
 
-    protected ResponseEntity<List<ViewStats>> get(String path, @Nullable Map<String, Object> parameters) {
+    protected ResponseEntity<List<ViewStats>> get(String path, Map<String, Object> parameters) {
         return makeAndSendRequestGet(path, parameters);
     }
 
