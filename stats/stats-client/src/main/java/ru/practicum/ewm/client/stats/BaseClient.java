@@ -25,7 +25,7 @@ public class BaseClient {
         return makeAndSendRequest(path, body);
     }
 
-    private <T> ResponseEntity<Object> makeAndSendRequest(String path, @Nullable T body) {
+    private <T> ResponseEntity<Object> makeAndSendRequest(String path, T body) {
         HttpEntity<T> requestEntity = new HttpEntity<>(body);
         ResponseEntity<Object> statsResponse;
         try {
