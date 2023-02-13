@@ -18,7 +18,7 @@ public class BaseClient {
     }
 
     protected ResponseEntity<List<ViewStats>> get(String path, @Nullable Map<String, Object> parameters) {
-        return makeAndSendRequestGet(path, parameters);
+        return makeAndSendRequestGet(path, parameters, null);
     }
 
     protected <T> ResponseEntity<Object> post(String path, T body) {
@@ -37,8 +37,9 @@ public class BaseClient {
     }
 
     private <T> ResponseEntity<List<ViewStats>> makeAndSendRequestGet(String path, @Nullable Map<String,
-                                                                      Object> parameters) {
-        HttpEntity<T> requestEntity = new HttpEntity<>(null);
+                                                                      Object> parameters, T body) {
+
+        HttpEntity<T> requestEntity = new HttpEntity<>(body);
         ResponseEntity<List<ViewStats>> statsResponse;
         try {
              statsResponse = rest.exchange(path, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<>() {},
