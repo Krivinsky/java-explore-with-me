@@ -51,8 +51,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<EventShortDto> getEventsByUser(Long userId, Integer from, Integer size) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        return eventRepository.findEventsByInitiator(optionalUser.get(), PageRequest.of(from, size))
+        List<Event> list = eventRepository.findEventsByInitiatorId(userId, PageRequest.of(from, size));
+        return list
                 .stream()
                 .map(EventMapper::toEventShortDto)
                 .collect(Collectors.toList());
@@ -81,7 +81,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventFullDto getEventByUser(Long userId, Long eventId) {
+    public EventFullDto getEvent(Long userId, Long eventId) {
         User optionalUser = userRepository.findById(userId)
                 .orElseThrow(() ->  new NotFoundException("User with id=" + userId + "was not found"));
         Event event = eventRepository.findById(eventId)

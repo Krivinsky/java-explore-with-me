@@ -47,7 +47,7 @@ public class PrivateController {
     @GetMapping("/{userId}/events/{eventId}")
     public ResponseEntity<EventFullDto> getEventByUser(@PathVariable Long userId,
                                                        @PathVariable Long eventId) {
-        return ResponseEntity.ok(eventService.getEventByUser(userId, eventId));
+        return ResponseEntity.ok(eventService.getEvent(userId, eventId));
     }
 
     @PatchMapping("/{userId}/events/{eventId}")

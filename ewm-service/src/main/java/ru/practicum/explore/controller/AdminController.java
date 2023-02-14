@@ -48,7 +48,7 @@ public class AdminController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<UserDto> addUser(@RequestBody NewUserRequest newUserRequest) {
+    public ResponseEntity<UserDto> addUser(@Valid @RequestBody NewUserRequest newUserRequest) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userService.addUser(newUserRequest));
