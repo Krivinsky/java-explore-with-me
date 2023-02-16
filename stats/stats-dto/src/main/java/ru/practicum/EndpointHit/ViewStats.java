@@ -1,4 +1,4 @@
-package ru.practicum;
+package ru.practicum.EndpointHit;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EndpointHitDtoResp {
+public class ViewStats {
     private String app;
     private String uri;
     private Long hits;

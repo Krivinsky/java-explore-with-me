@@ -1,4 +1,4 @@
-package ru.practicum;
+package ru.practicum.EndpointHit;
 
 
 import lombok.Builder;
@@ -11,12 +11,9 @@ import lombok.Setter;
 @Setter
 public class EndpointHitDto {
 
-
     private String app;
 
-
     private String uri;
-
 
     private String ip;
 
