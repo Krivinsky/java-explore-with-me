@@ -95,7 +95,7 @@ public class PrivateController {
 
     @PostMapping("/{userId}/comments/{eventId}")
     public ResponseEntity<CommentDto> addComment(@PathVariable Long userId, @PathVariable Long eventId,
-                                                 @RequestBody CommentDto commentDto ) {
+                                                 @RequestBody CommentDto commentDto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(commentService.addComment(userId, eventId, commentDto));

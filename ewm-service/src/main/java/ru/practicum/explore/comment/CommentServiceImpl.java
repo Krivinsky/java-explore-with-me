@@ -102,7 +102,7 @@ public class CommentServiceImpl implements CommentService {
         LocalDateTime end;
         if (Objects.isNull(rangeStart) && Objects.isNull(rangeEnd)) {
             start = LocalDateTime.now().withNano(0).minusDays(1L);
-            end = LocalDateTime.now().withNano(0);
+            end = LocalDateTime.now().withNano(0).plusMinutes(1L);
         } else {
             start = LocalDateTime.parse(rangeStart, dtf);
             end = LocalDateTime.parse(rangeEnd, dtf);
